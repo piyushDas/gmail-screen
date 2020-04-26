@@ -14,6 +14,7 @@ export const AppState = ({ children }) => {
   const [signinError, setSigninErrorFlag] = useState(false)
   const [emails, setEmails] = useState([])
   const [sentMails, setSentMails] = useState([])
+  const [inboxFlag, setInboxFlag] = useState(true)
 
   const getMailsForLoggedInUser = name => {
     const users = JSON.parse(localStorage.getItem('mailers'))
@@ -206,7 +207,9 @@ export const AppState = ({ children }) => {
         emails,
         setEmails,
         getMailsForLoggedInUser,
-        sentMails
+        sentMails,
+        inboxFlag,
+        setInboxFlag
       }}
     >
       {children}

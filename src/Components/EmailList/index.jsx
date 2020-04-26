@@ -1,24 +1,20 @@
-import React, { useContext } from 'react'
+import React from 'react'
 import NoResults from '../NoResults'
-// import { AppContext } from '../../context'
 import EmailListItem from '../EmailListItem'
 import './email.css'
 
-const EmailList = () => {
-  // const {
-  //   emails
-  // } = useContext(AppContext)
+const EmailList = ({ data, flag }) => {
   let list = (
     <div>Loading results</div>
   )
-  const emails = [{}, {}]
-  if (emails && emails.length) {
+  if (data && data.length) {
     list = (
       <>
         {
-          emails.map((result, index) => (
+          data.map((result, index) => (
             <EmailListItem
               result={result}
+              flag={flag}
               key={`${index}_email`}
             />
           ))
@@ -31,11 +27,23 @@ const EmailList = () => {
     )
   }
 
+  const getUnreadEmailCount = (() => {
+    let count = 0
+    if (data.length) {
+      for (const email of data) {
+        if (!email.seen) {
+          count +=1
+        }
+      }
+    }
+    return count
+  })()
+
   return (
     <div className="email-box">
       <div className="box-header">
         <div>
-          Inbox (16)
+          {flag ? `Inbox ${getUnreadEmailCount ? `(${getUnreadEmailCount})`: '' }` : 'Sent items'}
         </div>
         <div>
           <input type="text" placeholder="Search here"/>
