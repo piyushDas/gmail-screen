@@ -1,0 +1,72 @@
+.email-box {
+    background: #fff;
+    width: 96%;
+    margin: 2%;
+    box-shadow: 0 0 3px #ddd;
+    min-height: 96%;
+}
+
+.box-header {
+    display: flex;
+    padding: 12px;
+    padding-top: 24px;
+    font-size: 26px;
+    color: #555;
+    font-weight: 300;
+    align-items: center;
+}
+
+.box-header > div:first-of-type {
+    width: calc(100% - 300px);
+}
+
+.box-header input {
+    height: 28px;
+    width: 220px;
+    padding-left: 6px;
+}
+
+.box-header button {
+    padding: 0 12px;
+    background: #00b493;
+    border: none;
+    color: #fff;
+    font-weight: 600;
+    height: 28px;
+    font-size: 13px;
+}
+
+.box-subheader {
+    display: flex;
+    padding: 0 12px;
+    padding-bottom: 16px;
+}
+
+.box-subheader > div:first-of-type{
+    width: calc(100% - 100px);
+}
+
+.box-subheader > div:last-of-type {
+    width: 88px;
+    justify-content: flex-end;
+}
+
+.box-subheader > div:last-of-type .email-opt {
+    margin: 2px 0;
+}
+
+.email-opt {
+    padding: 5px 8px;
+    border: 1px solid #ddd;
+    margin: 2px;
+    font-size: 15px;
+    min-width: 30px;
+    text-align: center;
+    color: #777;
+    align-items: center
+}
+
+.email-opt > div:last-of-type {
+    margin-left: 8px;
+    font-size: 13px;
+}

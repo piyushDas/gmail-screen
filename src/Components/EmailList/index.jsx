@@ -1,30 +1,25 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import NoResults from '../NoResults'
-import SearchListItem from '../SearchListItem'
+// import { AppContext } from '../../context'
+import EmailListItem from '../EmailListItem'
+import './email.css'
 
-const SearchList = ({
-  searchResults,
-  componentClassName
-}) => {
+const EmailList = () => {
+  // const {
+  //   emails
+  // } = useContext(AppContext)
   let list = (
     <div>Loading results</div>
   )
-  if (searchResults && searchResults.length) {
-    let imgWidth = '366px'
-    let imgHeight = '275px'
-    if (componentClassName.indexOf("mobile-container") > -1) {
-      imgWidth = '100%'
-      imgHeight = 'auto'
-    }
+  const emails = [{}, {}]
+  if (emails && emails.length) {
     list = (
       <>
         {
-          searchResults.map((result, index) => (
-            <SearchListItem
-              data={result}
-              imgWidth={imgWidth}
-              imgHeight={imgHeight}
-              key={`${index}_${result.sku}`}
+          emails.map((result, index) => (
+            <EmailListItem
+              result={result}
+              key={`${index}_email`}
             />
           ))
         }
@@ -37,10 +32,36 @@ const SearchList = ({
   }
 
   return (
-    <ul id="search-list" className={`search-list ${componentClassName ? componentClassName: ''}`}>
-      {list}
-    </ul>
+    <div className="email-box">
+      <div className="box-header">
+        <div>
+          Inbox (16)
+        </div>
+        <div>
+          <input type="text" placeholder="Search here"/>
+          <button>Search</button>
+        </div>
+      </div>
+      <div className="box-subheader">
+        <div className="flex">
+          <div className="flex email-opt">
+            <div className="fa fa-refresh" />
+            <div>Refresh</div>
+          </div>
+          <div className="fa fa-eye email-opt" />
+          <div className="fa fa-exclamation email-opt" />
+          <div className="fa fa-trash-o email-opt" />
+        </div>
+        <div className="flex">
+          <div className="fa fa-arrow-left email-opt" />
+          <div className="fa fa-arrow-right email-opt" />
+        </div>
+      </div>
+      <ul id="email-list" className="email-list">
+        {list}
+      </ul>
+    </div>
   )
 }
 
-export default SearchList
+export default EmailList

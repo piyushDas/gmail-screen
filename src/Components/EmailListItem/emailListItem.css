@@ -1,0 +1,30 @@
+.email-list-item {
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.email-list-item:first-of-type {
+  border-top: 1px solid #ddd;
+}
+
+.checkbox {
+  width: 30px;
+  color: #00b493;
+  font-size: 20px;
+}
+
+.sender{
+  width: 260px;
+}
+
+.subject {
+  width: calc(100% - 424px);
+}
+
+.time {
+  width: 120px;
+  text-align: right;
+}

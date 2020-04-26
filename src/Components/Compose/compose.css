@@ -1,0 +1,73 @@
+.compose-mail{
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  width: 600px;
+  background: #fff;
+  box-shadow: 0 0 5px #ccc;
+}
+
+.new-mail-header {
+  background: #2e3f51;
+  padding: 12px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  color: #fff;
+  position: relative;
+}
+
+.close {
+  color: #fff;
+  position: absolute;
+  right: 13px;
+  top: 12px;
+  font-weight: 200;
+  cursor: pointer;
+}
+
+.mail-input{
+  position: relative;
+}
+
+.mail-input input {
+  width: 100%;
+  border: none;
+  height: 32px;
+  border-bottom: 1px solid #ddd;
+  padding-left: 42px;
+  color: #777;
+  font-size: 13px;
+}
+
+.mail-input input + span {
+  position: absolute;
+  color: #aaa;
+  top: 8px;
+  left: 8px;
+  font-size: 13px;
+}
+
+.compose-mail textarea {
+  width: 100%;
+  border: none;
+  resize: none;
+  height: 200px;
+  color: #777;
+  padding: 12px;
+  font-size: 13px;
+}
+
+.left-menu .mail-input > button {
+  max-width: 100px;
+  margin: 12px;
+  padding: 8px;
+}
+
+.del-mail {
+  display: inline-block;
+  padding: 8px;
+  color: #777;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  cursor: pointer;
+}

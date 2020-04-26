@@ -1,9 +1,59 @@
 .top-header{
-  padding: 12px;
-  border-bottom: 1px solid;
-  position: fixed;
-  top: 0;
-  z-index: 5;
+  padding: 12px 24px;
+  height: 56px;
   width: 100%;
   background: #fff;
+  box-shadow: 0 0 3px #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-search {
+  position: relative;
+  min-width: 180px;
+  color: #999;
+}
+
+.header-search > input {
+  height: 28px;
+  border: none;
+  min-width: 180px;
+}
+
+.header-search > input + label {
+  position: absolute;
+  left: 0;
+  top: 6px;
+}
+
+.top-header > div {
+  width: 50%;
+}
+
+.top-header .menu{
+  padding: 6px 10px;
+  background: #00b493;
+  color: #fff;
+  border: none;
+  border-radius: 2px;
+  margin-right: 12px;
+}
+
+.header-opts {
+  color: #aaa;
+  padding: 4px 8px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.header-opts > div:first-of-type {
+  color: #aaa;
+  padding: 4px;
+  font-size: 17px;
+}
+.header-opts > div {
+  color: #aaa;
+  padding: 4px 0;
+  font-size: 14px;
 }

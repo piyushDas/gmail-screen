@@ -1,0 +1,40 @@
+.expand-menu {
+    width: 72px;
+    height: 100vh;
+    background: #2e4051;
+    color: #fff;
+}
+
+.option-tray {
+    height: calc(100vh - 56px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.option-tray > div {
+    width: 100%;
+    padding: 16px 0;
+    text-align: center;
+    transition: all 0.3s ease-in;
+}
+
+.option-tray > div:hover {
+    cursor: pointer;
+    background-color: #1c2933;
+}
+
+.expand-menu + div {
+    width: calc(100% - 72px);
+}
+
+.profile {
+    height: 56px;
+    background: #1c2933;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    font-size: 18px;
+}

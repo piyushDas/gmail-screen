@@ -1,0 +1,93 @@
+.left-menu {
+    width: 320px;
+    padding: 32px;
+}
+
+.left-menu + div {
+    width: calc(100% - 320px);
+}
+
+.left-menu button {
+    background: #00b493;
+    border: none;
+    width: 100%;
+    padding: 10px;
+    color: #fff;
+    font-size: 14px;
+    border-radius: 2px;
+    font-weight: 600;
+    box-shadow: 0 0 3px #c5c5c5;
+}
+
+.left-menu .tag {
+    background: #fff;
+    font-size: 10px;
+    border: 1px solid #ccc;
+    padding: 4px 8px;
+    color: #777;
+    margin: 2px;
+}
+
+.tag div {
+    margin-right: 4px;
+}
+
+.left-menu-headers {
+    margin-top: 24px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.folder-labels {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    padding: 8px;
+    border-bottom: 1px solid #dedede;
+    color: #545454;
+}
+
+.folder-labels > div:first-of-type {
+    margin-right: 12px;
+    font-size: 16px;
+}
+
+.category-labels {
+    display: flex;
+    align-items: center;
+    font-size: 13px;
+    padding: 8px;
+    color: #545454;
+}
+
+.category-labels > div:first-of-type {
+    margin-right: 12px;
+    font-size: 16px;
+}
+
+
+.dot{
+    border-radius: 50%;
+    height: 8px;
+    width: 8px;
+}
+
+.green-dot {
+    background: #00b493;
+}
+.red-dot {
+    background: #f1514d;
+}
+.violet-dot {
+    background: #0e82c8;
+}
+
+.aqua-dot {
+    background: #0cc7cb;
+}
+
+.orange-dot {
+    background: #faac50;
+}

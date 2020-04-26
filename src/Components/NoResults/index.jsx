@@ -1,23 +1,14 @@
 import React from 'react'
-import {ReactComponent as Search} from '../../icons/search.svg'
 import './noResults.css'
 
-const NoResults = ({
-  componentClassName
-}) => {
+const NoResults = () => {
   return (
     <div className="no-result-box">
-      <div>
-        <Search height="60px" width="60px" />
-      </div>
       <div className="no-result-title">
-        Sorry we are not able to find you were looking for!
-      </div>
-      <div className="no-result-subtitle">
-        Would you like to explore other products?
+        No emails present in your inbox
       </div>
       <div>
-        <button className="no-result-button" onClick={() => window.location.reload()}>Explore</button>
+        <button className="no-result-button">Compose new mail</button>
       </div>
     </div>
   )

@@ -2,12 +2,11 @@ import React, { useContext, useState, useEffect } from 'react'
 import { AppContext } from '../../context'
 import Header from '../../Components/Header'
 import LeftMenu from '../../Components/LeftMenu'
-import EmailList from '../../Components/EmailList'
+import OpenMail from '../../Components/OpenMail'
 import ExpandMenu from '../../Components/ExpandMenu'
-import './mailbox.css'
+import './readmail.css'
 
-
-const Mailbox = () => {
+const Readmail = () => {
   const {
     setLoggedInUser
   } = useContext(AppContext)
@@ -19,23 +18,16 @@ const Mailbox = () => {
   }, [])
   return (
     <div className="desktop-shell">
+      <Header />
       <div className="flex">
         <ExpandMenu />
+        <LeftMenu />
         <div>
-          <Header />
-          {/* {loggedInUser} */}
-          <div className="flex">
-            
-            <LeftMenu />
-            <div>
-              <EmailList />
-            </div>
-          </div>
+          <OpenMail />
         </div>
       </div>
-      
     </div>
   )
 }
 
-export default Mailbox
+export default Readmail

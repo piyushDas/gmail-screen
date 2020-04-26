@@ -12,6 +12,7 @@ export const AppState = ({ children }) => {
   const [showSignup, setSignupFlag] = useState('')
   const [signupError, setSignupErrorFlag] = useState(false)
   const [signinError, setSigninErrorFlag] = useState(false)
+  const [emails, setEmails] = useState([])
 
   const findUser = (users, creds) => {
     let foundAt
@@ -141,7 +142,9 @@ export const AppState = ({ children }) => {
         signupError,
         setSigninErrorFlag,
         setSignupErrorFlag,
-        sendEmail
+        sendEmail,
+        emails,
+        setEmails
       }}
     >
       {children}
