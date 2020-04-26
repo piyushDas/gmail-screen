@@ -18,7 +18,7 @@ const EmailListItem = ({ result, flag }) => {
     <li className="email-list-item">
       <div className="fa fa-check-square checkbox" />
       <div className="sender">
-        {flag ? result.sender : result.reciever.join(', ')}
+        {flag ? result.sender : result.receiver.join(', ')}
       </div>
       <div className="subject">
         {result.subject}

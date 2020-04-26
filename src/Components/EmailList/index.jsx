@@ -23,7 +23,7 @@ const EmailList = ({ data, flag }) => {
     )
   } else {
     list = (
-      <NoResults />
+      <NoResults flag={flag} />
     )
   }
 

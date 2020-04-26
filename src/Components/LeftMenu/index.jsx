@@ -5,7 +5,8 @@ import './leftmenu.css'
 
 const LeftMenu = () => {
   const {
-    sendEmail
+    sendEmail,
+    setInboxFlag
   } = useContext(AppContext)
   const [newMail, setNewMail] = useState(false)
   const showMailBox = () => {
@@ -35,6 +36,14 @@ const LeftMenu = () => {
       iconClass: 'fa fa-trash-o'
     }
   ]
+
+  const navigateFolder = val => () => {
+    if (val === 'Inbox') {
+      setInboxFlag(true)
+    } else if (val === 'Sent mail') {
+      setInboxFlag(false)
+    }
+  }
 
   const categories = [
     {
@@ -70,7 +79,7 @@ const LeftMenu = () => {
         <div className="left-menu-headers">Folders</div>
         {
           options.map(el => (
-            <div className="folder-labels">
+            <div className="folder-labels" onClick={navigateFolder(el.label)}>
               <div className={el.iconClass}></div>
               <div>{el.label}</div>
               {/* <div>{el.count}</div> */}

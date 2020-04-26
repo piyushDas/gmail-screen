@@ -71,6 +71,14 @@ export const AppState = ({ children }) => {
         })
       }
     }
+
+    inboxMails.sort((a, b) => {
+      return b.time - a.time
+    })
+
+    sentboxMails.sort((a, b) => {
+      return b.time - a.time
+    })
     setEmails(inboxMails)
     setSentMails(sentboxMails)
   }
@@ -188,6 +196,7 @@ export const AppState = ({ children }) => {
       createMappings({msgId, userId, type:'CC'})
     }
     createMappings({msgId, userId: createUser(loggedInUser), type: 'Sen'})
+    getMailsForLoggedInUser(loggedInUser)
   }
 
   return (
