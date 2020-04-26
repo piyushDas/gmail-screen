@@ -13,6 +13,66 @@ export const AppState = ({ children }) => {
   const [signupError, setSignupErrorFlag] = useState(false)
   const [signinError, setSigninErrorFlag] = useState(false)
   const [emails, setEmails] = useState([])
+  const [sentMails, setSentMails] = useState([])
+
+  const getMailsForLoggedInUser = name => {
+    const users = JSON.parse(localStorage.getItem('mailers'))
+    let index = findUser(users, {mail:name})
+    const user = users[index]
+    const mappings = JSON.parse(localStorage.getItem('mappings'))
+    const inboxIds = {}
+    const sentIds = {}
+    for (const mapping of mappings) {
+      if ((mapping.type === 'CC' || mapping.type === 'Rec') && mapping.userId === user.id) {
+        inboxIds[mapping.msgId] = mapping.msgId
+      } else if (mapping.type === 'Sen' &&  mapping.userId === user.id) {
+        sentIds[mapping.msgId] = mapping.msgId
+      }
+    }
+    const mails = JSON.parse(localStorage.getItem('emailList'))
+    const inboxMails = []
+    const sentboxMails = []
+    for (const mail of mails) {
+      if (inboxIds[mail.id]) {
+        let fromId = ''
+        for (const mapping of mappings) {
+          if (mapping.msgId === mail.id && mapping.type === 'Sen') {
+            fromId = mapping.userId
+            break
+          }
+        }
+        let sender = ''
+        for (const user of users) {
+          if (user.id === fromId) {
+            sender = user.mail
+          }
+        }
+        inboxMails.push({
+          ...mail,
+          sender
+        })
+      } else if (sentIds[mail.id]) {
+        let toIds = {}
+        for (const mapping of mappings) {
+          if (mapping.msgId === mail.id && (mapping.type === 'CC' || mapping.type === 'Rec')) {
+            toIds[mapping.userId] = mapping.userId
+          }
+        }
+        let receiver = []
+        for (const user of users) {
+          if (toIds[user.id]) {
+            receiver.push(user.mail)
+          }
+        }
+        sentboxMails.push({
+          ...mail,
+          receiver
+        })
+      }
+    }
+    setEmails(inboxMails)
+    setSentMails(sentboxMails)
+  }
 
   const findUser = (users, creds) => {
     let foundAt
@@ -144,7 +204,9 @@ export const AppState = ({ children }) => {
         setSignupErrorFlag,
         sendEmail,
         emails,
-        setEmails
+        setEmails,
+        getMailsForLoggedInUser,
+        sentMails
       }}
     >
       {children}

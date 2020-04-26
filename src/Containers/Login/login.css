@@ -1,3 +1,74 @@
 .login-box {
-    
+    background-color: #f3f3f4;
+    min-height: 100vh;
+    position: relative;
+}
+
+.login-box > div {
+    background: #fff;
+    box-shadow: 0 0 3px #ccc;
+    width: 600px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    top:20%;
+    padding: 24px;
+    text-align: center;
+}
+
+.sub-msg {
+    font-size: 12px;
+    color: #777;
+}
+
+.login-box button {
+    background: #00b493;
+    color: #fff;
+    /* height: 24px; */
+    width: 320px;
+    font-size: 14px;
+    padding: 6px 0;
+    margin: 36px 0 12px;
+}
+
+.login-box input {
+    height: 32px;
+    width: 320px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    /* background: #fff; */
+    margin-top: 12px;
+    padding-left: 6px;
+}
+
+.title {
+    font-size: 24px;
+}
+
+.sub-title {
+    font-size: 14px;
+    color: #777;
+    margin: 4px auto 12px;
+}
+
+.form-input {
+    position: relative;
+    width: 320px;
+    margin: auto;
+    margin-top: 12px;
+}
+
+.form-input span {
+    position: absolute;
+    top: 22px;
+    left: 8px;
+    font-size: 13px;
+    color: #777;
+    transition: all 0.3s ease-in;
+}
+
+.form-input input:focus + span, .form-input input.value-input + span {
+    top: 0px;
+    left: 5px;
+    font-size: 11px;
 }

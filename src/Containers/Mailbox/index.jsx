@@ -9,12 +9,14 @@ import './mailbox.css'
 
 const Mailbox = () => {
   const {
-    setLoggedInUser
+    setLoggedInUser,
+    getMailsForLoggedInUser
   } = useContext(AppContext)
   useEffect(() => {
     const name = window.localStorage.getItem('username')
     if (name) {
       setLoggedInUser(name)
+      getMailsForLoggedInUser(name)
     }
   }, [])
   return (

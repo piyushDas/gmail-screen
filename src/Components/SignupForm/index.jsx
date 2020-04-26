@@ -40,13 +40,13 @@ const SignupForm = () => {
   
   return (
     <div>
-      <div>
+      <div className="title">
         Sign up
       </div>
-      <div>
+      <div className="sub-title">
         Create a new account
       </div>
-      <div>
+      <div className="form-input">
         <input type="text" onChange={e => setMail(e.currentTarget.value)} />
         <span>Email</span>
         {
@@ -56,7 +56,7 @@ const SignupForm = () => {
         }
       </div>
 
-      <div>
+      <div className="form-input">
         <input type="password" onChange={e => setPassword(e.currentTarget.value)} />
         <span>password</span>
         {
@@ -66,7 +66,7 @@ const SignupForm = () => {
         }
       </div>
 
-      <div>
+      <div className="form-input">
         <input type="password" onChange={e => setRepassword(e.currentTarget.value)} />
         <span>Confirm password</span>
         {
@@ -76,7 +76,7 @@ const SignupForm = () => {
         }
       </div>
 
-      <div>
+      <div className="sub-msg">
         <button onClick={addNewUser}>Signup</button>
         <div onClick={toggleSignup}>Already have an account - Signin</div>
       </div>

@@ -35,14 +35,14 @@ const LoginForm = () => {
 
   let template = (
     <div>
-      <div>
+      <div className="title">
         Sign in
       </div>
-      <div>
+      <div className="sub-title">
         Continue to your account
       </div>
-      <div>
-        <input type="text" onChange={e => setMail(e.currentTarget.value)} />
+      <div className="form-input">
+        <input type="text" className={mail ? 'value-input' : ''}  onChange={e => setMail(e.currentTarget.value)} />
         <span>Email</span>
         {
           mailError && <div>
@@ -51,8 +51,8 @@ const LoginForm = () => {
         }
       </div>
 
-      <div>
-        <input type="password" onChange={e => setPassword(e.currentTarget.value)} />
+      <div className="form-input">
+        <input type="password" className={password ? 'value-input' : ''} onChange={e => setPassword(e.currentTarget.value)} />
         <span>password</span>
         {
           passwordError && <div>
@@ -63,7 +63,7 @@ const LoginForm = () => {
 
       <div>
         <button onClick={authenticate}>Login</button>
-        <div onClick={toggleSignup}>Don't have an account yet? - Create new account</div>
+        <div onClick={toggleSignup} className="sub-msg">Don't have an account yet? - Create new account</div>
       </div>
 
       {
