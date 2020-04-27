@@ -63,7 +63,8 @@
     min-width: 30px;
     text-align: center;
     color: #777;
-    align-items: center
+    align-items: center;
+    cursor: pointer;
 }
 
 .email-opt > div:last-of-type {

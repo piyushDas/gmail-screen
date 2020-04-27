@@ -61,8 +61,8 @@ const ExpandMenu = () => {
       </div>
       <div className="option-tray">
         {
-          options.map(el => (
-              <div className={el.iconClass} />
+          options.map((el, index) => (
+              <div className={el.iconClass} key={`${el.label}_${index}`} />
           ))
         }
       </div>

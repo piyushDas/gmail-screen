@@ -6,7 +6,8 @@ import './leftmenu.css'
 const LeftMenu = () => {
   const {
     sendEmail,
-    setInboxFlag
+    setInboxFlag,
+    getUnreadEmailCount
   } = useContext(AppContext)
   const [newMail, setNewMail] = useState(false)
   const showMailBox = () => {
@@ -16,23 +17,19 @@ const LeftMenu = () => {
   const options = [
     {
       label:'Inbox',
-      count: 12,
+      count: getUnreadEmailCount,
       iconClass: 'fa fa-inbox'
     }, {
       label:'Sent mail',
-      count: 12,
       iconClass: 'fa fa-envelope-o'
     }, {
       label:'Important',
-      count: 12,
       iconClass: 'fa fa-certificate'
     }, {
       label:'Drafts',
-      count: 12,
       iconClass: 'fa fa-file-text-o'
     }, {
       label:'Trash',
-      count: 12,
       iconClass: 'fa fa-trash-o'
     }
   ]
@@ -78,11 +75,13 @@ const LeftMenu = () => {
       <div>
         <div className="left-menu-headers">Folders</div>
         {
-          options.map(el => (
-            <div className="folder-labels" onClick={navigateFolder(el.label)}>
+          options.map((el, index) => (
+            <div className="folder-labels" key={`${el.label}_${index}`} onClick={navigateFolder(el.label)}>
               <div className={el.iconClass}></div>
               <div>{el.label}</div>
-              {/* <div>{el.count}</div> */}
+              {
+                el.count && <div className="count-badge">{el.count}</div>
+              }
             </div>
           ))
         }
@@ -90,8 +89,8 @@ const LeftMenu = () => {
       <div>
         <div className="left-menu-headers">Categories</div>
         {
-          categories.map(el => (
-            <div className="category-labels">
+          categories.map((el, index) => (
+            <div className="category-labels" key={`${el.label}_${index}`}>
               <div className={el.color}></div>
               <div>{el.label}</div>
             </div>
@@ -102,8 +101,8 @@ const LeftMenu = () => {
         <div className="left-menu-headers">Labels</div>
         <div className="flex flex-wrap">
           {
-            labels.map(el => (
-              <div className="flex tag">
+            labels.map((el, index) => (
+              <div className="flex tag" key={`${el}_${index}`} >
                 <div className="fa fa-tag" />
                 <div>{el}</div>
               </div>

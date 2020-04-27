@@ -4,6 +4,11 @@
   font-size: 14px;
   display: flex;
   align-items: center;
+  cursor: pointer;
+}
+
+.seen-mail {
+  background: #eee;
 }
 
 .email-list-item:first-of-type {
@@ -14,6 +19,14 @@
   width: 30px;
   color: #00b493;
   font-size: 20px;
+}
+
+.checkbox > span {
+  display: inline-block;
+  height: 18px;
+  width: 18px;
+  border: 1px solid #ccc;
+  margin-top: 4px;
 }
 
 .sender{

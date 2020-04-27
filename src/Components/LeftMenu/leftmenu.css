@@ -47,6 +47,19 @@
     padding: 8px;
     border-bottom: 1px solid #dedede;
     color: #545454;
+    cursor: pointer;
+    position: relative;
+}
+
+.count-badge {
+    position: absolute;
+    right: 0;
+    top: 5px;
+    background: #FFC107;
+    color: #fff;
+    padding: 2px 8px;
+    font-size: 12px;
+    font-weight: 600;
 }
 
 .folder-labels > div:first-of-type {

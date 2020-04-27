@@ -1,7 +1,7 @@
 import React from 'react'
 import './emailListItem.css'
 
-const EmailListItem = ({ result, flag }) => {
+const EmailListItem = ({ result, flag, readMail }) => {
   // const { } = data
 
   const getTimeDisplay = () => {
@@ -15,8 +15,8 @@ const EmailListItem = ({ result, flag }) => {
   }
 
   let template = (
-    <li className="email-list-item">
-      <div className="fa fa-check-square checkbox" />
+    <li className={result.seen ? 'email-list-item seen-mail' : 'email-list-item'} onClick={readMail}>
+      <div className="checkbox"><span /></div>
       <div className="sender">
         {flag ? result.sender : result.receiver.join(', ')}
       </div>

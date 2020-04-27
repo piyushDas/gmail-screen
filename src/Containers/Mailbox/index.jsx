@@ -10,11 +10,7 @@ import './mailbox.css'
 const Mailbox = () => {
   const {
     setLoggedInUser,
-    getMailsForLoggedInUser,
-    emails,
-    sentMails,
-    inboxFlag
-
+    getMailsForLoggedInUser
   } = useContext(AppContext)
   useEffect(() => {
     const name = window.localStorage.getItem('username')
@@ -34,7 +30,7 @@ const Mailbox = () => {
             
             <LeftMenu />
             <div>
-              <EmailList flag={inboxFlag} data={inboxFlag ? emails : sentMails} />
+              <EmailList />
             </div>
           </div>
         </div>

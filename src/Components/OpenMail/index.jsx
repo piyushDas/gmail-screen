@@ -1,19 +1,24 @@
 import React from 'react'
-import NoResults from '../NoResults'
+import './openmail.css'
 // import { AppContext } from '../../context'
 
-const OpenMail = () => {
+const OpenMail = ({ mail, flag }) => {
+  const time = new Date(mail.time)
   return (
-    <div>
-      <div>
-          Subject
+    <div className="open-mail">
+      <div className="mail-subject">
+          {mail.subject}
+          <span>{time.toString().substr(4, 17)}</span>
       </div>
       <div>
-          <div>Piyush Das</div>
-          <div>to: mailpiyushdas@gmail.com, shivani.thakur693@gmail.com</div>
+          <div className="mail-contact">
+              <span>{flag ? 'from: ' : 'to: '} </span>
+              {flag ? mail.sender : mail.receiver}
+            </div>
+          {/* <div>to: {mail.receiver}</div> */}
       </div>
-      <div>
-          The actual message of mail
+      <div className="mail-content">
+          {mail.content}
       </div>
     </div>
   )

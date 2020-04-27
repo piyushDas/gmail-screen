@@ -1,0 +1,30 @@
+.open-mail {
+    padding: 12px;
+}
+
+.mail-subject {
+    font-size: 24px;
+    margin-bottom: 8px;
+    position: relative;
+}
+
+.mail-subject span {
+    position: absolute;
+    right: 12px;
+    font-size: 13px;
+    color: #999;
+}
+
+.mail-contact {
+    color: #999;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.mail-contact span {
+    color: #333;
+}
+
+.mail-content {
+    padding: 12px 0;
+}

@@ -15,6 +15,20 @@ export const AppState = ({ children }) => {
   const [emails, setEmails] = useState([])
   const [sentMails, setSentMails] = useState([])
   const [inboxFlag, setInboxFlag] = useState(true)
+  const [readEmail, setReadEmailFlag] = useState(false)
+  const [currentEmail, setCurrentEmail] = useState({})
+
+  const getUnreadEmailCount = (() => {
+    let count = 0
+    if (emails.length) {
+      for (const email of emails) {
+        if (!email.seen) {
+          count +=1
+        }
+      }
+    }
+    return count
+  })()
 
   const getMailsForLoggedInUser = name => {
     const users = JSON.parse(localStorage.getItem('mailers'))
@@ -23,15 +37,19 @@ export const AppState = ({ children }) => {
     const mappings = JSON.parse(localStorage.getItem('mappings'))
     const inboxIds = {}
     const sentIds = {}
+    const seenIds = {}
     for (const mapping of mappings) {
       if ((mapping.type === 'CC' || mapping.type === 'Rec') && mapping.userId === user.id) {
         inboxIds[mapping.msgId] = mapping.msgId
       } else if (mapping.type === 'Sen' &&  mapping.userId === user.id) {
         sentIds[mapping.msgId] = mapping.msgId
       }
+      if (mapping.seen) {
+        seenIds[mapping.msgId] = mapping.msgId
+      } 
     }
     const mails = JSON.parse(localStorage.getItem('emailList'))
-    const inboxMails = []
+    let inboxMails = []
     const sentboxMails = []
     for (const mail of mails) {
       if (inboxIds[mail.id]) {
@@ -74,6 +92,13 @@ export const AppState = ({ children }) => {
 
     inboxMails.sort((a, b) => {
       return b.time - a.time
+    })
+    
+    inboxMails = inboxMails.map(el => {
+      if(seenIds[el.id]) {
+        el.seen = true
+      }
+      return el
     })
 
     sentboxMails.sort((a, b) => {
@@ -199,6 +224,26 @@ export const AppState = ({ children }) => {
     getMailsForLoggedInUser(loggedInUser)
   }
 
+  const updateSeenCurrentMail = msgId => {
+    const users = JSON.parse(localStorage.getItem('mailers'))
+    let name = loggedInUser
+    if (!name) {
+      name = localStorage.getItem('username')
+    }
+    let index = findUser(users, {mail:name})
+    const user = users[index]
+    const mappings = JSON.parse(localStorage.getItem('mappings'))
+    for (const mapping of mappings) {
+      if (mapping.userId === user.id && msgId === mapping.msgId && (mapping.type === 'CC' || mapping.type === 'Rec')) {
+        mapping.seen = true
+        break
+      }
+    }
+    console.log(mappings)
+    window.localStorage.setItem('mappings', JSON.stringify(mappings))
+    getMailsForLoggedInUser(name)
+  }
+
   return (
     <AppContext.Provider
       value={{
@@ -218,7 +263,13 @@ export const AppState = ({ children }) => {
         getMailsForLoggedInUser,
         sentMails,
         inboxFlag,
-        setInboxFlag
+        setInboxFlag,
+        readEmail,
+        setReadEmailFlag,
+        currentEmail,
+        setCurrentEmail,
+        getUnreadEmailCount,
+        updateSeenCurrentMail
       }}
     >
       {children}

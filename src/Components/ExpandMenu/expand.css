@@ -1,6 +1,6 @@
 .expand-menu {
     width: 72px;
-    height: 100vh;
+    min-height: 100vh;
     background: #2e4051;
     color: #fff;
 }
